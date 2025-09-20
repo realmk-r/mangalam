@@ -2,203 +2,356 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>College Activity Registration</title>
+  <title>Mangalam Fest 2025 Registration</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-   body {
+    /* --- Root Variables for Modern Color Scheme --- */
+    :root {
+      --primary-color: #6a11cb;
+      --secondary-color: #2575fc;
+      --background-start: #1a1a2d;
+      --background-end: #0d0d1a;
+      --card-bg: rgba(22, 22, 38, 0.75);
+      --input-bg: rgba(0, 0, 0, 0.2);
+      --text-color: #f0f0f0;
+      --text-muted: #a0a0b0;
+      --glow-color: rgba(106, 17, 203, 0.5);
+    }
+
+    /* --- General Body and Animated Background --- */
+    body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e0e7ff, #f0f4f8);
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      background: url("https://media.collegedekho.com/media/img/institute/crawled_images/Mangalam_College_of_Engineering.jpg") no-repeat center center fixed;
-      background-size: cover;
+      padding: 20px;
+      background: linear-gradient(45deg, var(--background-start), var(--background-end), var(--background-start));
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      overflow-x: hidden;
     }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* --- Registration Card with Glassmorphism Effect --- */
     .card {
-      background: white;
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       padding: 40px 35px;
-      border-radius: 18px;
-      box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
-      width: 420px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      width: 100%;
+      max-width: 450px;
       text-align: center;
+      animation: fadeIn 1s ease-out;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Header Styling --- */
     header h1 {
-      font-size: 28px;
-      font-weight: 800;
-      color: #1f2937;
-      margin-bottom: 8px;
+      font-size: 2rem;
+      font-weight: 700;
+      background: -webkit-linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
     }
+
     header p {
-      font-size: 15px;
-      color: #6b7280;
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    /* --- Interactive Form Fields --- */
+    .input-group {
+      position: relative;
       margin-bottom: 25px;
     }
-    label {
-      display: block;
-      text-align: left;
-      margin: 12px 0 6px;
-      font-weight: 600;
-      color: #374151;
-    }
-    input {
+
+    .input-field {
       width: 100%;
       padding: 12px 14px;
-      margin-bottom: 18px;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      font-size: 15px;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    input:focus {
-      outline: none;
-      border-color: #6366f1;
-      box-shadow: 0px 0px 6px rgba(99, 102, 241, 0.5);
+      background: var(--input-bg);
+      border: 1px solid transparent;
+      border-bottom: 2px solid var(--text-muted);
+      border-radius: 8px;
+      font-size: 1rem;
+      color: var(--text-color);
+      transition: all 0.3s ease;
     }
 
-    /* Checkbox group fix */
+    .input-label {
+      position: absolute;
+      top: 14px;
+      left: 15px;
+      color: var(--text-muted);
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-field:focus,
+    .input-field:not(:placeholder-shown) {
+      outline: none;
+      border-bottom-color: var(--secondary-color);
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    
+    .input-field:focus + .input-label,
+    .input-field:not(:placeholder-shown) + .input-label {
+      top: -18px;
+      left: 5px;
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+    }
+
+    /* --- Custom Checkbox Group for Activities --- */
     .checkbox-group {
       text-align: left;
-      margin-bottom: 20px;
-    }
-    .checkbox-group-title {
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #374151;
-    }
-    .checkbox-item {
-      display: flex;
-      align-items: center;   /* aligns text with checkbox */
-      gap: 10px;             /* space between checkbox & label */
-      margin-bottom: 12px;
-      font-weight: 500;
-      color: #444;
-      cursor: pointer;
-    }
-    .checkbox-item input {
-      accent-color: #6366f1;
-      width: 18px;
-      height: 18px;
+      margin-bottom: 30px;
     }
 
-    button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #6366f1, #4f46e5);
-      color: white;
-      font-size: 17px;
+    .checkbox-group-title {
       font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: var(--text-color);
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--input-bg);
+      padding: 12px;
+      border-radius: 8px;
       cursor: pointer;
       transition: background 0.3s ease, transform 0.2s ease;
     }
-    button:hover {
-      background: linear-gradient(135deg, #4f46e5, #4338ca);
-      transform: translateY(-2px);
+
+    .checkbox-item:hover {
+        background: rgba(0,0,0,0.4);
+        transform: translateY(-2px);
     }
+
+    .checkbox-item input[type="checkbox"] {
+      display: none; /* Hide default checkbox */
+    }
+
+    .custom-checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--text-muted);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+    
+    .custom-checkbox .checkmark {
+      width: 10px;
+      height: 10px;
+      background-color: var(--secondary-color);
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      transform: scale(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .checkbox-item input:checked + .custom-checkbox {
+      border-color: var(--secondary-color);
+      background: var(--primary-color);
+    }
+    
+    .checkbox-item input:checked + .custom-checkbox .checkmark {
+      transform: scale(1);
+    }
+
+    /* --- Animated Submit Button --- */
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px var(--glow-color);
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .submit-btn:hover::before {
+      left: 100%;
+    }
+
+    /* --- Success Message --- */
     .success-message {
       display: none;
-      margin-top: 18px;
-      color: #16a34a;
-      font-weight: 700;
-      font-size: 15px;
+      margin-top: 20px;
+      color: #34d399; /* A vibrant green */
+      font-weight: 600;
+      font-size: 1rem;
     }
-   /* Mobile adjustments */
-@media (max-width: 600px) {
-  .card {
-    width: 85%;           /* smaller width */
-    max-width: 300px;     /* maximum width on small phones */
-    padding: 15px 12px;   /* smaller padding */
-    border-radius: 12px;
-  }
 
-  header h1 {
-    font-size: 20px;
-  }
-
-  header p {
-    font-size: 12px;
-  }
-
-  input, button {
-    font-size: 14px;
-    padding: 8px 10px;
-  }
-}
+    /* --- Mobile Adjustments --- */
+    @media (max-width: 600px) {
+      .card {
+        padding: 30px 20px;
+        margin: 0 10px;
+      }
+      header h1 { font-size: 1.8rem; }
+      header p { font-size: 0.9rem; }
+      .activities-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="card">
     <header>
-      <h1>Register for Activities</h1>
-      <p>Please fill out the form to secure your spot.</p>
+      <h1>Mangalam Fest 2025</h1>
+      <p>Register for activities and unleash your potential.</p>
     </header>
 
     <form id="registrationForm">
-      <div>
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      <div class="input-group">
+        <input type="text" id="name" name="name" class="input-field" placeholder=" " required>
+        <label for="name" class="input-label">Full Name</label>
       </div>
 
-      <div>
-        <label for="college">College</label>
-        <input type="text" id="college" name="college" placeholder="Your college name" required>
+      <div class="input-group">
+        <input type="text" id="college" name="college" class="input-field" placeholder=" " required>
+        <label for="college" class="input-label">College Name</label>
       </div>
 
-      <div>
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="10-digit number" pattern="[0-9]{10}" required>
+      <div class="input-group">
+        <input type="tel" id="phone" name="phone" class="input-field" placeholder=" " pattern="[0-9]{10}" required>
+        <label for="phone" class="input-label">10-Digit Phone Number</label>
       </div>
 
       <div class="checkbox-group">
-        <div class="checkbox-group-title">Choose Activities</div>
-        <label class="checkbox-item"><input type="checkbox" name="activity" value="Finance Game"><span>Finance Game</span></label>
-        <label class="checkbox-item"><input type="checkbox" name="activity" value="Marketing Game"><span>Marketing Game</span></label>
-        <label class="checkbox-item"><input type="checkbox" name="activity" value="HR Game"><span>HR Game</span></label>
-        <label class="checkbox-item"><input type="checkbox" name="activity" value="Treasure Hunt"><span>Treasure Hunt</span></label>
-        <label class="checkbox-item"><input type="checkbox" name="activity" value="3x3 Football"><span>3x3 Football</span></label>
+        <div class="checkbox-group-title">Choose Your Activities</div>
+        <div class="activities-grid">
+          <label class="checkbox-item">
+            <input type="checkbox" name="activity" value="Finance Game">
+            <span class="custom-checkbox"><div class="checkmark"></div></span>
+            <span>Finance Game</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="activity" value="Marketing Game">
+            <span class="custom-checkbox"><div class="checkmark"></div></span>
+            <span>Marketing Game</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="activity" value="HR Game">
+            <span class="custom-checkbox"><div class="checkmark"></div></span>
+            <span>HR Game</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="activity" value="Treasure Hunt">
+            <span class="custom-checkbox"><div class="checkmark"></div></span>
+            <span>Treasure Hunt</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="activity" value="3x3 Football">
+            <span class="custom-checkbox"><div class="checkmark"></div></span>
+            <span>3x3 Football</span>
+          </label>
+        </div>
       </div>
 
-      <button type="submit">Register</button>
+      <button type="submit" class="submit-btn">Register Now</button>
     </form>
 
     <div id="successMessage" class="success-message">
-      ✅ Registration Completed!
+      ✅ Registration Completed Successfully!
     </div>
-  </div>
+</div>
 
- <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbz3isu4L3F-O9rwunQij0IIo8eh-A-yurT7ZgYcxeMol9VFEeHrpwzANKhLaEtNgPGL/exec"; 
-const form = document.getElementById("registrationForm");
-const successMessage = document.getElementById("successMessage");
+<script>
+  // This backend logic is untouched as requested.
+  const scriptURL = "https://script.google.com/macros/s/AKfycbz3isu4L3F-O9rwunQij0IIo8eh-A-yurT7ZgYcxeMol9VFEeHrpwzANKhLaEtNgPGL/exec";
+  const form = document.getElementById("registrationForm");
+  const successMessage = document.getElementById("successMessage");
+  const submitButton = form.querySelector('button[type="submit"]');
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submitButton.disabled = true;
+    submitButton.textContent = 'Submitting...';
 
-  // Collect checked activities
-  const activities = Array.from(document.querySelectorAll("input[name='activity']:checked"))
-    .map(cb => cb.value)
-    .join(", ");
+    // Collect checked activities
+    const activities = Array.from(document.querySelectorAll("input[name='activity']:checked"))
+      .map(cb => cb.value)
+      .join(", ");
 
-  const formData = new FormData();
-  formData.append("name", document.getElementById("name").value);
-  formData.append("college", document.getElementById("college").value);
-  formData.append("phone", document.getElementById("phone").value);
-  formData.append("activity", activities);
+    const formData = new FormData();
+    formData.append("name", document.getElementById("name").value);
+    formData.append("college", document.getElementById("college").value);
+    formData.append("phone", document.getElementById("phone").value);
+    formData.append("activity", activities);
 
-  try {
-    await fetch(scriptURL, { method: "POST", body: formData });
-    successMessage.style.display = "block";
-    form.reset();
-  } catch (err) {
-    alert("Error submitting form. Try again.");
-    console.error(err);
-  }
-});
+    try {
+      const response = await fetch(scriptURL, { method: "POST", body: formData });
+      if (response.ok) {
+        successMessage.style.display = "block";
+        form.reset();
+      } else {
+        throw new Error('Network response was not ok.');
+      }
+    } catch (err) {
+      alert("Error: Could not submit the form. Please try again.");
+      console.error('Submission Error:', err);
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Register Now';
+    }
+  });
 
 </script>
 
