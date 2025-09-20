@@ -106,29 +106,26 @@
       font-weight: 700;
       font-size: 15px;
     }
-    @media (max-width: 600px) {
-  body {
-    background-attachment: scroll; /* fixes mobile issues with fixed backgrounds */
-  }
-
+   /* Mobile adjustments */
+@media (max-width: 600px) {
   .card {
-    padding: 20px 18px;       /* smaller padding */
-    width: 90%;               /* smaller width */
-    max-width: 350px;         /* limit maximum width */
-    border-radius: 15px;      /* slightly smaller corners */
+    width: 85%;           /* smaller width */
+    max-width: 300px;     /* maximum width on small phones */
+    padding: 15px 12px;   /* smaller padding */
+    border-radius: 12px;
   }
 
   header h1 {
-    font-size: 22px;          /* smaller heading */
+    font-size: 20px;
   }
 
   header p {
-    font-size: 13px;          /* smaller subheading */
+    font-size: 12px;
   }
 
   input, button {
-    font-size: 15px;
-    padding: 10px 12px;
+    font-size: 14px;
+    padding: 8px 10px;
   }
 }
   </style>
